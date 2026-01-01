@@ -1,0 +1,4 @@
+D:/Code/Markdown/build/CMakeFiles/AIChatApp.dir
+D:/Code/Markdown/build/CMakeFiles/INSTALL.dir
+D:/Code/Markdown/build/CMakeFiles/ALL_BUILD.dir
+D:/Code/Markdown/build/CMakeFiles/ZERO_CHECK.dir

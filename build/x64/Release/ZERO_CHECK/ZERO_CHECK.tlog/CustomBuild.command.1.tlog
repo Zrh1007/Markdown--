@@ -1,0 +1,10 @@
+^D:\CODE\MARKDOWN\BUILD\CMAKEFILES\85B94C6E52B467A583CAAC162B4BD0E5\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Code/Markdown -BD:/Code/Markdown/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Code/Markdown/build/AIChatApp.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

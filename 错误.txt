@@ -1,0 +1,76 @@
+========================================
+   AI聊天助手 - 构建脚本
+========================================
+
+警告：未找到Visual Studio编译器，将尝试使用CMake默认配置
+正在配置项目...
+-- Building for: Visual Studio 18 2026
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.26220.
+-- The CXX compiler identification is MSVC 19.50.35721.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/Microsoft Visual Studio/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (2.5s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_BUILD_TYPE
+
+
+-- Build files have been written to: D:/Code/Markdown/build
+
+正在构建项目...
+适用于 .NET Framework MSBuild 版本 18.0.5+e22287bf1
+
+  1>Checking Build System
+D:\Microsoft Visual Studio\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(536,5): warning MSB8021: The value 'Mul
+tiByte' of the variable 'CharacterSet' is incompatible with the value 'true' of the variable 'WindowsAppContainer'. [D:
+\Code\Markdown\build\AIChatApp.vcxproj]
+  Building Custom Rule D:/Code/Markdown/CMakeLists.txt
+cl : 命令行  warning D9047: "await" 选项已否决，并将在将来的版本中移除。 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+      默认情况下，Standard C++ 协同例程在 C++20 或更高版本中可用，或在更早的语言模式下使用 "/await:strict"。
+  cmake_pch.cxx
+D:\Code\Markdown\src\pch.h(34,17): error C2872: “Windows”: 不明确的符号 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+  (compiling source file 'CMakeFiles/AIChatApp.dir/cmake_pch.cxx')
+      D:\Microsoft Visual Studio\VC\Tools\MSVC\14.50.35717\include\vccorlib.h(2956,11):
+      可能是“Windows”
+      D:\Windows Kits\10\Include\10.0.26100.0\cppwinrt\winrt\Windows.Data.Json.h(993,24):
+      或    “winrt::Windows”
+
+D:\Code\Markdown\src\pch.h(35,17): error C2872: “Windows”: 不明确的符号 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+  (compiling source file 'CMakeFiles/AIChatApp.dir/cmake_pch.cxx')
+      D:\Microsoft Visual Studio\VC\Tools\MSVC\14.50.35717\include\vccorlib.h(2956,11):
+      可能是“Windows”
+      D:\Windows Kits\10\Include\10.0.26100.0\cppwinrt\winrt\Windows.Data.Json.h(993,24):
+      或    “winrt::Windows”
+
+D:\Code\Markdown\src\pch.h(36,17): error C2872: “Windows”: 不明确的符号 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+  (compiling source file 'CMakeFiles/AIChatApp.dir/cmake_pch.cxx')
+      D:\Microsoft Visual Studio\VC\Tools\MSVC\14.50.35717\include\vccorlib.h(2956,11):
+      可能是“Windows”
+      D:\Windows Kits\10\Include\10.0.26100.0\cppwinrt\winrt\Windows.Data.Json.h(993,24):
+      或    “winrt::Windows”
+
+D:\Code\Markdown\src\pch.h(37,17): error C2872: “Windows”: 不明确的符号 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+  (compiling source file 'CMakeFiles/AIChatApp.dir/cmake_pch.cxx')
+      D:\Microsoft Visual Studio\VC\Tools\MSVC\14.50.35717\include\vccorlib.h(2956,11):
+      可能是“Windows”
+      D:\Windows Kits\10\Include\10.0.26100.0\cppwinrt\winrt\Windows.Data.Json.h(993,24):
+      或    “winrt::Windows”
+
+D:\Code\Markdown\src\pch.h(38,17): error C2872: “Windows”: 不明确的符号 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+  (compiling source file 'CMakeFiles/AIChatApp.dir/cmake_pch.cxx')
+      D:\Microsoft Visual Studio\VC\Tools\MSVC\14.50.35717\include\vccorlib.h(2956,11):
+      可能是“Windows”
+      D:\Windows Kits\10\Include\10.0.26100.0\cppwinrt\winrt\Windows.Data.Json.h(993,24):
+      或    “winrt::Windows”
+
+D:\Code\Markdown\build\CMakeFiles\AIChatApp.dir\cmake_pch.cxx(2,1): error C1083: 无法打开编译器生成的文件: “D:/Code/Markdown/build/
+AIChatApp.dir/Release//cmake_pch.pch”: Permission denied [D:\Code\Markdown\build\AIChatApp.vcxproj]
+D:\Microsoft Visual Studio\MSBuild\Microsoft\WindowsXaml\v18.0\8.2\Microsoft.Windows.UI.Xaml.Common.targets(415,5): err
+or MSB4181: “CompileXaml”任务返回了 false，但未记录错误。 [D:\Code\Markdown\build\AIChatApp.vcxproj]
+错误：构建失败
+Press any key to continue . . .

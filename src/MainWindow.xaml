@@ -1,0 +1,142 @@
+<Page
+    x:Class="AIChatApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AIChatApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <!-- 消息气泡样式 -->
+        <Style x:Key="UserMessageStyle" TargetType="Border">
+            <Setter Property="Background" Value="#0078D4"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="80,8,16,8"/>
+        </Style>
+        
+        <Style x:Key="AIMessageStyle" TargetType="Border">
+            <Setter Property="Background" Value="#F3F2F1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="16,8,80,8"/>
+        </Style>
+        
+        <!-- 文本样式 -->
+        <Style x:Key="MessageTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        
+        <Style x:Key="AIMessageTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#323130"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 标题栏 -->
+        <Border Grid.Row="0" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0" Text="AI聊天助手 - SiliconFlow" 
+                          Foreground="White" FontSize="18" FontWeight="SemiBold"/>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12">
+                    <TextBox x:Name="ApiKeyTextBox" PlaceholderText="输入API密钥" 
+                            Width="200" VerticalAlignment="Center"
+                            TextChanged="ApiKeyTextBox_TextChanged"/>
+                    <ComboBox x:Name="ModelComboBox" PlaceholderText="选择模型" 
+                             Width="150" VerticalAlignment="Center"
+                             SelectionChanged="ModelComboBox_SelectionChanged">
+                        <ComboBoxItem Content="DeepSeek-V2.5"/>
+                        <ComboBoxItem Content="DeepSeek-V2"/>
+                        <ComboBoxItem Content="其他模型"/>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 聊天消息区域 -->
+        <ScrollViewer x:Name="MessageScrollViewer" Grid.Row="1" 
+                     VerticalScrollBarVisibility="Auto" Padding="0">
+            <ItemsControl x:Name="MessagesItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,4">
+                            <Border Style="{Binding MessageType, Converter={StaticResource MessageTypeToStyleConverter}}">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Sender}" 
+                                              FontWeight="SemiBold" 
+                                              Margin="0,0,0,4"
+                                              Foreground="{Binding MessageType, Converter={StaticResource MessageTypeToTextColorConverter}}"/>
+                                    <TextBlock Text="{Binding Content}" 
+                                              Style="{Binding MessageType, Converter={StaticResource MessageTypeToTextStyleConverter}}"/>
+                                    <TextBlock Text="{Binding Timestamp}" 
+                                              FontSize="10" 
+                                              Opacity="0.7"
+                                              Margin="0,4,0,0"
+                                              HorizontalAlignment="{Binding MessageType, Converter={StaticResource MessageTypeToAlignmentConverter}}"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- 输入区域 -->
+        <Border Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="#E1E1E1" 
+               Background="White" Padding="16,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox x:Name="MessageTextBox" Grid.Column="0" 
+                        PlaceholderText="输入消息..." 
+                        VerticalAlignment="Center"
+                        KeyDown="MessageTextBox_KeyDown"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        MinHeight="40"
+                        MaxHeight="120"/>
+                
+                <Button x:Name="SendButton" Grid.Column="1" 
+                       Content="发送" 
+                       Margin="12,0,0,0"
+                       VerticalAlignment="Center"
+                       Click="SendButton_Click"
+                       Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                       Foreground="White"
+                       Padding="16,8"/>
+            </Grid>
+        </Border>
+
+        <!-- 加载指示器 -->
+        <Border x:Name="LoadingOverlay" Grid.Row="1" Grid.RowSpan="2" 
+               Background="#80000000" Visibility="Collapsed">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+                <ProgressRing IsActive="True" Width="40" Height="40"/>
+                <TextBlock Text="AI正在思考中..." Foreground="White" FontSize="14"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
